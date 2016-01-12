@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<input type="text"><input type="submit"><br>
+<script>
+$(function() {
+    socket = new WebSocket("ws://127.0.0.1:9000/{{ request.GET.room }}");
+    socket.onmessage = function(e) {
+        $('body').append(e.data+'<br>');
+    }
+    $('input[type="submit"]').on("click", function(){
+        var text = $('input[type="text"]').val() ;
+        socket.send(text);
+        $('input[type="text"]').val("");
+    });
+});
+</script>
+</body>
+</html>

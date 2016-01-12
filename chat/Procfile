@@ -1,0 +1,5 @@
+web: python manage.py runserver
+wsserver: python manage.py runwsserver
+worker1: python manage.py runworker
+worker2: python manage.py runworker
+redis: redis-server
